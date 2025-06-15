@@ -356,4 +356,79 @@ function countCharacters(myString){
     }
 
 }
-console.log(cnt);
+// console.log(cnt);
+
+// 19. Write a javascript  function that sorts an array of numbers 
+// in ascending order. 
+const unsortedArray = [5, 2, 9, 1, 3, 6];
+
+// const sortedArray = unsortedArray.sort((a, b) =>a-b);
+// console.log(sortedArray);
+
+  for(let i=0;i<unsortedArray.length;i++)
+    {
+       for(let j = i+1;j<unsortedArray.length;j++)
+        {
+            if(unsortedArray[i] > unsortedArray[j])
+                {
+                    let temp = unsortedArray[i];
+                    unsortedArray[i] = unsortedArray[j];
+                    unsortedArray[j] = temp;
+                }
+        }
+    }
+
+    // console.log(unsortedArray);
+
+//  20. Write a javascript  function that sorts an array of numbers 
+// in descending order.   
+const arrNumber = [3, 1, 4, 1, 5, 9, 2, 6, 5];
+const sortedArray = arrNumber.sort((a, b) =>b-a);
+// console.log(sortedArray);
+
+for(let index = 0 ;index <arrNumber.length;index++)
+    {
+        for(let j = index+1;j<arrNumber.length;j++)
+            {
+                if(arrNumber[index] < arrNumber[j])
+                    {
+                       let temp = arrNumber[index];
+                       arrNumber[index] = arrNumber[j];
+                        arrNumber[j] = temp;
+                    }
+            }
+    }
+    // console.log(arrNumber);
+
+  
+    // 23. Write a function which converts string input into an object
+ //stringToObject("a.b.c", "someValue");
+ // output → {a: {b: {c: "someValue"}}}
+
+//  Logic
+//  split('.') – Turns the string "a.b.c" into ["a", "b", "c"].
+// Loop through keys – For each key except the last, build empty nested objects.
+// On the last key, assign the given value ("someValue").
+
+   function stringToObject(path, value) {
+  const keys = path.split('.');
+  const result = {};
+  let current = result;
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    if (i === keys.length - 1) {
+      current[key] = value; // last key → assign the value
+    } else {
+      current[key] = {};     // intermediate key → assign an empty object
+      current = current[key]; // move deeper
+    }
+  }
+
+  return result;
+}
+
+// Example
+const output = stringToObject("a.b.c", "someValue");
+console.log(output); // { a: { b: { c: 'someValue' } } }
+ 
